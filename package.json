@@ -1,6 +1,6 @@
 {
   "name": "bet-cs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "BETool content script module",
   "main": "index.js",
   "scripts": {
@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/BETool/bet-cs",
   "dependencies": {
-    "bet-api": "0.0.1",
-    "bet-ctor": "0.0.1",
-    "bet-logger": "0.0.1",
-    "bet-talker": "0.0.1",
-    "bet-helper": "0.0.1"
+    "bet-api": "^0.0.1",
+    "bet-ctor": "^0.0.1",
+    "bet-logger": "^0.0.2",
+    "bet-talker": "^0.0.1",
+    "bet-helper": "^0.0.1"
   }
 }
