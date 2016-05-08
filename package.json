@@ -1,6 +1,6 @@
 {
   "name": "bet-cs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "BETool content script module",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,27 @@
     "bet-logger": "latest",
     "bet-talker": "latest",
     "bet-helper": "latest"
+  },
+  "devDependencies": {
+    "bet-bg": "latest",
+    "bet-module": "latest",
+    "babel": "^5.8.23",
+    "babel-core": "^6.3.13",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.9.3",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-if": "^1.2.5",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.3",
+    "gulp-util": "^3.0.6",
+    "node-libs-browser": "^0.5.2",
+    "run-sequence": "^1.1.1",
+    "vinyl-map": "^1.0.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.10.1"
   }
 }
