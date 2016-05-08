@@ -45,9 +45,6 @@ export default class BetContentScript {
   proceed (modules) {
     log(`proceed frame ${window !== top}`, modules);
 
-    this.api.gs.set('rrr', 'ttt', (data) => log('gs set ', data));
-    this.api.ajax.get({url: 'http://localhost:8080/manifest.json'}, (data) => log('get ajax', data));
-
     if (modules.err) {
       log('proceed err', modules.err);
 
