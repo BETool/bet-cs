@@ -11,7 +11,21 @@ class BetContentScript {
 
   load () {
     console.log('load');
-    this.dealer.send('Hello', info => console.log('info', info));
+    this.dealer.send(
+      {
+        type: 'GET_MODULES',
+        payload: this.pageInfo(),
+      },
+      info => console.log('GET_MODULES', info)
+    );
+  }
+
+  pageInfo () {
+    return {
+      host:  window.document.location.hostname,
+      url: window.document.location.href,
+      isFrame: (window !== top),
+    };
   }
 };
 
