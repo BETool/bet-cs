@@ -1,11 +1,12 @@
+/* global window:true top:true */
+
 'use strict';
 
 import BetConnector from 'bet-connector';
 
 class BetContentScript {
 
-  constructor (app) {
-    app = app || {};
+  constructor () {
     this.dealer = new BetConnector('chrome');
   }
 
@@ -16,17 +17,17 @@ class BetContentScript {
         type: 'GET_MODULES',
         payload: this.pageInfo(),
       },
-      info => console.log('GET_MODULES', info)
+      info => console.log('GET_MODULES', info),
     );
   }
 
   pageInfo () {
     return {
-      host:  window.document.location.hostname,
+      host: window.document.location.hostname,
       url: window.document.location.href,
       isFrame: (window !== top),
     };
   }
-};
+}
 
 export default BetContentScript;
