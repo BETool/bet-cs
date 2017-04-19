@@ -3,6 +3,12 @@
 'use strict';
 
 import BetConnector from 'bet-connector';
+import {
+  injectRandom,
+  injectWithDelay,
+  injectImmediately,
+  injectDocumentReady,
+} from './injections';
 
 class BetContentScript {
 
@@ -17,8 +23,36 @@ class BetContentScript {
         type: 'GET_MODULES',
         payload: this.pageInfo(),
       },
-      info => console.log('GET_MODULES', info),
+      (response) => {
+        console.log('GET_MODULES', response);
+        if (
+          response
+          &&
+          false === response.err
+          &&
+          response.value
+          &&
+          Array.isArray(response.value.payload)
+        ) {
+          this.inject(response.value.payload);
+        }
+      },
     );
+  }
+
+  inject (src) {
+    src.forEach((m) => {
+      switch (m.r) {
+        case 0: // dom
+          return injectDocumentReady(m);
+        case 1: // now
+          return injectImmediately(m);
+        case 2: // rnd
+          return injectRandom(m);
+        default: // delay
+          return injectWithDelay(m);
+      }
+    });
   }
 
   pageInfo () {
