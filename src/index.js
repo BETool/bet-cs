@@ -47,9 +47,10 @@ class BetContentScript {
           return injectDocumentReady(m);
         case 1: // now
           return injectImmediately(m);
-        case 2: // rnd
-          return injectRandom(m);
-        default: // delay
+        default: // delay & rnd
+          if (`${m.r}`.match(/\./)) {
+            return injectRandom(m);
+          }
           return injectWithDelay(m);
       }
     });
