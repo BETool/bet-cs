@@ -24,7 +24,8 @@
     "prepush": "npm run lint && npm test"
   },
   "dependencies": {
-    "bet-connector": "0.0.1"
+    "bet-connector": "0.0.1",
+    "bet-helper": "0.0.1"
   },
   "devDependencies": {
     "babel-cli": "6.24.0",
