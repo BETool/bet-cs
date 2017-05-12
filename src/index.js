@@ -3,12 +3,15 @@
 'use strict';
 
 import BetConnector from 'bet-connector';
+import Logger from 'bet-logger';
 import {
   injectRandom,
   injectWithDelay,
   injectImmediately,
   injectDocumentReady,
 } from './injections';
+
+const log = new Logger('BET:cs');
 
 class BetContentScript {
 
@@ -17,14 +20,13 @@ class BetContentScript {
   }
 
   load () {
-    console.log('load');
     this.dealer.send(
       {
         type: 'GET_MODULES',
         payload: this.pageInfo(),
       },
       (response) => {
-        console.log('GET_MODULES', response);
+        log('GET_MODULES', response);
         if (
           response
           &&

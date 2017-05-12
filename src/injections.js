@@ -3,6 +3,9 @@
 'use strict';
 
 import helper from 'bet-helper';
+import Logger from 'bet-logger';
+
+const log = new Logger('BET:cs:injections');
 
 function tagInjector (c) {
   return (() => {
@@ -56,26 +59,25 @@ export function injectRandom (m) {
   const injector = getInjector(m);
   const [min, max] = `${m.r}`.split('.');
   const rnd = helper.random(min, max) * 1000;
-  console.log('injectRandom', m.r);
-  console.log('rnd', rnd);
+  log(`injectRandom (${rnd}) : ${m.r}`);
 
   helper.contentLoaded(window, () => setTimeout(injector, rnd));
 }
 
 export function injectWithDelay (m) {
-  console.log('injectWithDelay', m.r);
+  log(`injectWithDelay (${m.r})`);
   const injector = getInjector(m);
   helper.contentLoaded(window, () => setTimeout(injector, m.r * 1000));
 }
 
 export function injectImmediately (m) {
-  console.log('injectImmediately', m.r);
+  log(`injectImmediately (${m.r})`);
   const injector = getInjector(m);
   injector();
 }
 
 export function injectDocumentReady (m) {
-  console.log('injectDocumentReady', m.r);
+  log(`injectDocumentReady (${m.r})`);
   const injector = getInjector(m);
   helper.contentLoaded(window, injector);
 }
